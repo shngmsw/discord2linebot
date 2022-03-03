@@ -38,7 +38,7 @@ http
       res.end("Discord Bot is active now\n");
     }
   })
-  .listen(3000);
+  .listen(process.env.PORT || 3000);
 
 // Discord bot implements
 client.on("ready", (message) => {
