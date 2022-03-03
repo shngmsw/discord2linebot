@@ -1,0 +1,5 @@
+node_modules/*
+launch.json
+.env
+local/*
+.vscode/settings.json
