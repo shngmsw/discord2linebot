@@ -48,9 +48,6 @@ client.on("ready", (message) => {
 });
 
 client.on("messageCreate", (message) => {
-  if (message.author.bot) {
-    return;
-  }
   // DMには応答しない
   if (message.channel.type == "dm") {
     return;
