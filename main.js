@@ -7,6 +7,7 @@ const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_WEBHOOKS,
   ],
   partials: ["MESSAGE", "CHANNEL"],
 });
@@ -56,17 +57,14 @@ client.on("messageCreate", (message) => {
   var msg = message;
 
   // botへのリプライは無視
-  if (msg.mentions.has(client.user)) {
+  if (msg.channel.id === process.env.CHANNELID_DAYCORD) {
+    //GASにメッセージを送信
+    sendGAS(msg);
     return;
-  } else {
-    if (msg.channel.id === process.env.CHANNELID_DAYCORD) {
-      //GASにメッセージを送信
-      sendGAS(msg);
-      return;
-    }
   }
 
   function sendGAS(msg) {
+
     var jsonData = {
       events: [
         {
